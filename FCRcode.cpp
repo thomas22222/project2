@@ -237,479 +237,24 @@ cout<<"sssssssssss"<<' '<<"mark"<<s<<endl;
     }
     stack<int>back;
     queue<int>fore;
-    if(s==2){
-    for(int i=0;i<x;i++)
+    
+    
+            int aa=0,bb=0,cc=0,dd=0;
+        int ii=0,jj=0;
+    while(1)
     {
-        for(int j=0;j<y;j++)
-        {
-            if(map[i][j]=='0'&&intmap[s][i][j]<=zz/2&&intmap[s][i][j]!=0)
-            {
-                si=i;
-                sj=j;
-                map[si][sj]='2';
-                back.push(j);
-                back.push(i);
 
-                    while(1)
-                    {
-                        int pp=1;
-                        if(si-1>-1)
-                        {
-                            if(intmap[s][si-1][sj]==intmap[s][si][sj]-1&&intmap[s][si-1][sj]!=0&&pp&&map[si-1][sj]=='0')
-                            {
-                                
-                                back.push(sj);
-                                back.push(si-1);
-                                fore.push(si-1);
-                                fore.push(sj);
-                                si=si-1;
-                                map[si][sj]='2';
-                                pp=0;
-                            }
-                        }
-                        if(si+1<x)
-                        {
-                            if(intmap[s][si+1][sj]==intmap[s][si][sj]-1&&intmap[s][si+1][sj]!=0&&pp&&map[si+1][sj]=='0')
-                            {
-                                back.push(sj);
-                                back.push(si+1);
-                                fore.push(si+1);
-                                fore.push(sj);
-                                si=si+1;
-                                map[si][sj]='2';
-                                pp=0;
-                                
-                            }
-                        }
-                        if(sj-1>-1)
-                        {
-                            if(intmap[s][si][sj-1]==intmap[s][si][sj]-1&&intmap[s][si][sj-1]!=0&&pp&&map[si][sj-1]=='0')
-                            {
-                                back.push(sj-1);
-                                back.push(si);
-                                fore.push(si);
-                                fore.push(sj-1);
-                                sj--;
-                                map[si][sj]='2';
-                                pp=0;
-                            }
-                        }
-                        if(sj+1<y)
-                        {
-                            if(intmap[s][si][sj+1]==intmap[s][si][sj]-1&&intmap[s][si][sj+1]!=0&&pp&&map[si][sj+1]=='0')
-                            {
-                                back.push(sj+1);
-                                back.push(si);
-                                fore.push(si);
-                                fore.push(sj+1);
-                                sj++;
-                                map[si][sj]='2';
-                                pp=0;
-                            }
-                        }
-                        if(si-1>-1)
-                        {
-                            if(intmap[s][si-1][sj]==intmap[s][si][sj]-1&&intmap[s][si-1][sj]!=0&&pp)
-                            {
-                                
-                                back.push(sj);
-                                back.push(si-1);
-                                fore.push(si-1);
-                                fore.push(sj);
-                                si=si-1;
-                                map[si][sj]='2';
-                                pp=0;
-                            }
-                        }
-                        if(si+1<x)
-                        {
-                            if(intmap[s][si+1][sj]==intmap[s][si][sj]-1&&intmap[s][si+1][sj]!=0&&pp)
-                            {
-                                back.push(sj);
-                                back.push(si+1);
-                                fore.push(si+1);
-                                fore.push(sj);
-                                si=si+1;
-                                map[si][sj]='2';
-                                pp=0;
-                                
-                            }
-                        }
-                        if(sj-1>-1)
-                        {
-                            if(intmap[s][si][sj-1]==intmap[s][si][sj]-1&&intmap[s][si][sj-1]!=0&&pp)
-                            {
-                                back.push(sj-1);
-                                back.push(si);
-                                fore.push(si);
-                                fore.push(sj-1);
-                                sj--;
-                                map[si][sj]='2';
-                                pp=0;
-                            }
-                        }
-                        if(sj+1<y)
-                        {
-                            if(intmap[s][si][sj+1]==intmap[s][si][sj]-1&&intmap[s][si][sj+1]!=0&&pp)
-                            {
-                                back.push(sj+1);
-                                back.push(si);
-                                fore.push(si);
-                                fore.push(sj+1);
-                                sj++;
-                                map[si][sj]='2';
-                                pp=0;
-                            }
-                        }
-                        if(pp==1)
-                        {
-                            break;
-                        }
-                        pp=1;
-                    }
-                    fore.push(ri);
-                    fore.push(rj);
-                    //cout<<22222<<endl;
-                    while(!back.empty())
-                    {
-                        a[sum]=back.top();
-                        back.pop();
-                        a[sum+1]=back.top();
-                        back.pop();
-                        sum+=2;
-                    }
-                    while(!fore.empty())
-                    {
-                        a[sum]=fore.front();
-                        fore.pop();
-                        a[sum+1]=fore.front();
-                        fore.pop();
-                        sum+=2;
-                    }
-                    
-            }
-        }
-    }}
-    if(s==1){
-    for(int j=0;j<y;j++)
+
+    for (;jj<y-bb;jj++)
     {
-        for(int i=0;i<x;i++)
-        {
-            if(map[i][j]=='0'&&intmap[s][i][j]<=zz/2&&intmap[s][i][j]!=0)
+        
+            if(map[ii][jj]=='0'&&intmap[s][ii][jj]<=zz/2&&intmap[s][ii][jj]!=0)
             {
-                si=i;
-                sj=j;
+                si=ii;
+                sj=jj;
                 map[si][sj]='2';
-                back.push(j);
-                back.push(i);
-
-                    while(1)
-                    {
-                        int pp=1;
-                        if(si-1>-1)
-                        {
-                            if(intmap[s][si-1][sj]==intmap[s][si][sj]-1&&intmap[s][si-1][sj]!=0&&pp&&map[si-1][sj]=='0')
-                            {
-                                
-                                back.push(sj);
-                                back.push(si-1);
-                                fore.push(si-1);
-                                fore.push(sj);
-                                si=si-1;
-                                map[si][sj]='2';
-                                pp=0;
-                            }
-                        }
-                        if(si+1<x)
-                        {
-                            if(intmap[s][si+1][sj]==intmap[s][si][sj]-1&&intmap[s][si+1][sj]!=0&&pp&&map[si+1][sj]=='0')
-                            {
-                                back.push(sj);
-                                back.push(si+1);
-                                fore.push(si+1);
-                                fore.push(sj);
-                                si=si+1;
-                                map[si][sj]='2';
-                                pp=0;
-                                
-                            }
-                        }
-                        if(sj-1>-1)
-                        {
-                            if(intmap[s][si][sj-1]==intmap[s][si][sj]-1&&intmap[s][si][sj-1]!=0&&pp&&map[si][sj-1]=='0')
-                            {
-                                back.push(sj-1);
-                                back.push(si);
-                                fore.push(si);
-                                fore.push(sj-1);
-                                sj--;
-                                map[si][sj]='2';
-                                pp=0;
-                            }
-                        }
-                        if(sj+1<y)
-                        {
-                            if(intmap[s][si][sj+1]==intmap[s][si][sj]-1&&intmap[s][si][sj+1]!=0&&pp&&map[si][sj+1]=='0')
-                            {
-                                back.push(sj+1);
-                                back.push(si);
-                                fore.push(si);
-                                fore.push(sj+1);
-                                sj++;
-                                map[si][sj]='2';
-                                pp=0;
-                            }
-                        }
-                        if(si-1>-1)
-                        {
-                            if(intmap[s][si-1][sj]==intmap[s][si][sj]-1&&intmap[s][si-1][sj]!=0&&pp)
-                            {
-                                
-                                back.push(sj);
-                                back.push(si-1);
-                                fore.push(si-1);
-                                fore.push(sj);
-                                si=si-1;
-                                map[si][sj]='2';
-                                pp=0;
-                            }
-                        }
-                        if(si+1<x)
-                        {
-                            if(intmap[s][si+1][sj]==intmap[s][si][sj]-1&&intmap[s][si+1][sj]!=0&&pp)
-                            {
-                                back.push(sj);
-                                back.push(si+1);
-                                fore.push(si+1);
-                                fore.push(sj);
-                                si=si+1;
-                                map[si][sj]='2';
-                                pp=0;
-                                
-                            }
-                        }
-                        if(sj-1>-1)
-                        {
-                            if(intmap[s][si][sj-1]==intmap[s][si][sj]-1&&intmap[s][si][sj-1]!=0&&pp)
-                            {
-                                back.push(sj-1);
-                                back.push(si);
-                                fore.push(si);
-                                fore.push(sj-1);
-                                sj--;
-                                map[si][sj]='2';
-                                pp=0;
-                            }
-                        }
-                        if(sj+1<y)
-                        {
-                            if(intmap[s][si][sj+1]==intmap[s][si][sj]-1&&intmap[s][si][sj+1]!=0&&pp)
-                            {
-                                back.push(sj+1);
-                                back.push(si);
-                                fore.push(si);
-                                fore.push(sj+1);
-                                sj++;
-                                map[si][sj]='2';
-                                pp=0;
-                            }
-                        }
-                        if(pp==1)
-                        {
-                            break;
-                        }
-                        pp=1;
-                    }
-                    fore.push(ri);
-                    fore.push(rj);
-                    //cout<<22222<<endl;
-                    while(!back.empty())
-                    {
-                        a[sum]=back.top();
-                        back.pop();
-                        a[sum+1]=back.top();
-                        back.pop();
-                        sum+=2;
-                    }
-                    while(!fore.empty())
-                    {
-                        a[sum]=fore.front();
-                        fore.pop();
-                        a[sum+1]=fore.front();
-                        fore.pop();
-                        sum+=2;
-                    }
-                    
-
-            }
-        }
-    }}
-    if(s==0){
-    for(int i=x-1;i>-1;i--)
-    {
-        for(int j=0;j<y;j++)
-        {
-            if(map[i][j]=='0'&&intmap[s][i][j]<=zz/2&&intmap[s][i][j]!=0)
-            {
-                si=i;
-                sj=j;
-                map[si][sj]='2';
-                back.push(j);
-                back.push(i);
-
-                    while(1)
-                    {
-                        int pp=1;
-                        if(si-1>-1)
-                        {
-                            if(intmap[s][si-1][sj]==intmap[s][si][sj]-1&&intmap[s][si-1][sj]!=0&&pp&&map[si-1][sj]=='0')
-                            {
-                                
-                                back.push(sj);
-                                back.push(si-1);
-                                fore.push(si-1);
-                                fore.push(sj);
-                                si=si-1;
-                                map[si][sj]='2';
-                                pp=0;
-                            }
-                        }
-                        if(si+1<x)
-                        {
-                            if(intmap[s][si+1][sj]==intmap[s][si][sj]-1&&intmap[s][si+1][sj]!=0&&pp&&map[si+1][sj]=='0')
-                            {
-                                back.push(sj);
-                                back.push(si+1);
-                                fore.push(si+1);
-                                fore.push(sj);
-                                si=si+1;
-                                map[si][sj]='2';
-                                pp=0;
-                                
-                            }
-                        }
-                        if(sj-1>-1)
-                        {
-                            if(intmap[s][si][sj-1]==intmap[s][si][sj]-1&&intmap[s][si][sj-1]!=0&&pp&&map[si][sj-1]=='0')
-                            {
-                                back.push(sj-1);
-                                back.push(si);
-                                fore.push(si);
-                                fore.push(sj-1);
-                                sj--;
-                                map[si][sj]='2';
-                                pp=0;
-                            }
-                        }
-                        if(sj+1<y)
-                        {
-                            if(intmap[s][si][sj+1]==intmap[s][si][sj]-1&&intmap[s][si][sj+1]!=0&&pp&&map[si][sj+1]=='0')
-                            {
-                                back.push(sj+1);
-                                back.push(si);
-                                fore.push(si);
-                                fore.push(sj+1);
-                                sj++;
-                                map[si][sj]='2';
-                                pp=0;
-                            }
-                        }
-                        if(si-1>-1)
-                        {
-                            if(intmap[s][si-1][sj]==intmap[s][si][sj]-1&&intmap[s][si-1][sj]!=0&&pp)
-                            {
-                                
-                                back.push(sj);
-                                back.push(si-1);
-                                fore.push(si-1);
-                                fore.push(sj);
-                                si=si-1;
-                                map[si][sj]='2';
-                                pp=0;
-                            }
-                        }
-                        if(si+1<x)
-                        {
-                            if(intmap[s][si+1][sj]==intmap[s][si][sj]-1&&intmap[s][si+1][sj]!=0&&pp)
-                            {
-                                back.push(sj);
-                                back.push(si+1);
-                                fore.push(si+1);
-                                fore.push(sj);
-                                si=si+1;
-                                map[si][sj]='2';
-                                pp=0;
-                                
-                            }
-                        }
-                        if(sj-1>-1)
-                        {
-                            if(intmap[s][si][sj-1]==intmap[s][si][sj]-1&&intmap[s][si][sj-1]!=0&&pp)
-                            {
-                                back.push(sj-1);
-                                back.push(si);
-                                fore.push(si);
-                                fore.push(sj-1);
-                                sj--;
-                                map[si][sj]='2';
-                                pp=0;
-                            }
-                        }
-                        if(sj+1<y)
-                        {
-                            if(intmap[s][si][sj+1]==intmap[s][si][sj]-1&&intmap[s][si][sj+1]!=0&&pp)
-                            {
-                                back.push(sj+1);
-                                back.push(si);
-                                fore.push(si);
-                                fore.push(sj+1);
-                                sj++;
-                                map[si][sj]='2';
-                                pp=0;
-                            }
-                        }
-                        if(pp==1)
-                        {
-                            break;
-                        }
-                        pp=1;
-                    }
-                    fore.push(ri);
-                    fore.push(rj);
-                    //cout<<22222<<endl;
-                    while(!back.empty())
-                    {
-                        a[sum]=back.top();
-                        back.pop();
-                        a[sum+1]=back.top();
-                        back.pop();
-                        sum+=2;
-                    }
-                    while(!fore.empty())
-                    {
-                        a[sum]=fore.front();
-                        fore.pop();
-                        a[sum+1]=fore.front();
-                        fore.pop();
-                        sum+=2;
-                    }
-                    
-
-            }
-        }
-    }}
-    if(s==3){
-    for(int j=y-1;j>-1;j--)
-    {
-        for(int i=x-1;i>-1;i--)
-        {
-            if(map[i][j]=='0'&&intmap[s][i][j]<=zz/2&&intmap[s][i][j]!=0)
-            {
-                si=i;
-                sj=j;
-                map[si][sj]='2';
-                back.push(j);
-                back.push(i);
+                back.push(jj);
+                back.push(ii);
 
                     while(1)
                     {
@@ -850,8 +395,464 @@ cout<<"sssssssssss"<<' '<<"mark"<<s<<endl;
                            
 
             }
-        }
-    }}
+    }aa++;jj--;ii++;if(dd+bb==y||aa+cc==x)break;
+    for (;ii<x-cc;ii++)
+    {
+        
+            if(map[ii][jj]=='0'&&intmap[s][ii][jj]<=zz/2&&intmap[s][ii][jj]!=0)
+            {
+                si=ii;
+                sj=jj;
+                map[si][sj]='2';
+                back.push(jj);
+                back.push(ii);
+
+                    while(1)
+                    {
+                        int pp=1;
+                        if(si-1>-1)
+                        {
+                            if(intmap[s][si-1][sj]==intmap[s][si][sj]-1&&intmap[s][si-1][sj]!=0&&pp&&map[si-1][sj]=='0')
+                            {
+                                
+                                back.push(sj);
+                                back.push(si-1);
+                                fore.push(si-1);
+                                fore.push(sj);
+                                si=si-1;
+                                map[si][sj]='2';
+                                pp=0;
+                            }
+                        }
+                        if(si+1<x)
+                        {
+                            if(intmap[s][si+1][sj]==intmap[s][si][sj]-1&&intmap[s][si+1][sj]!=0&&pp&&map[si+1][sj]=='0')
+                            {
+                                back.push(sj);
+                                back.push(si+1);
+                                fore.push(si+1);
+                                fore.push(sj);
+                                si=si+1;
+                                map[si][sj]='2';
+                                pp=0;
+                                
+                            }
+                        }
+                        if(sj-1>-1)
+                        {
+                            if(intmap[s][si][sj-1]==intmap[s][si][sj]-1&&intmap[s][si][sj-1]!=0&&pp&&map[si][sj-1]=='0')
+                            {
+                                back.push(sj-1);
+                                back.push(si);
+                                fore.push(si);
+                                fore.push(sj-1);
+                                sj--;
+                                map[si][sj]='2';
+                                pp=0;
+                            }
+                        }
+                        if(sj+1<y)
+                        {
+                            if(intmap[s][si][sj+1]==intmap[s][si][sj]-1&&intmap[s][si][sj+1]!=0&&pp&&map[si][sj+1]=='0')
+                            {
+                                back.push(sj+1);
+                                back.push(si);
+                                fore.push(si);
+                                fore.push(sj+1);
+                                sj++;
+                                map[si][sj]='2';
+                                pp=0;
+                            }
+                        }
+                        if(si-1>-1)
+                        {
+                            if(intmap[s][si-1][sj]==intmap[s][si][sj]-1&&intmap[s][si-1][sj]!=0&&pp)
+                            {
+                                
+                                back.push(sj);
+                                back.push(si-1);
+                                fore.push(si-1);
+                                fore.push(sj);
+                                si=si-1;
+                                map[si][sj]='2';
+                                pp=0;
+                            }
+                        }
+                        if(si+1<x)
+                        {
+                            if(intmap[s][si+1][sj]==intmap[s][si][sj]-1&&intmap[s][si+1][sj]!=0&&pp)
+                            {
+                                back.push(sj);
+                                back.push(si+1);
+                                fore.push(si+1);
+                                fore.push(sj);
+                                si=si+1;
+                                map[si][sj]='2';
+                                pp=0;
+                                
+                            }
+                        }
+                        if(sj-1>-1)
+                        {
+                            if(intmap[s][si][sj-1]==intmap[s][si][sj]-1&&intmap[s][si][sj-1]!=0&&pp)
+                            {
+                                back.push(sj-1);
+                                back.push(si);
+                                fore.push(si);
+                                fore.push(sj-1);
+                                sj--;
+                                map[si][sj]='2';
+                                pp=0;
+                            }
+                        }
+                        if(sj+1<y)
+                        {
+                            if(intmap[s][si][sj+1]==intmap[s][si][sj]-1&&intmap[s][si][sj+1]!=0&&pp)
+                            {
+                                back.push(sj+1);
+                                back.push(si);
+                                fore.push(si);
+                                fore.push(sj+1);
+                                sj++;
+                                map[si][sj]='2';
+                                pp=0;
+                            }
+                        }
+                        if(pp==1)
+                        {
+                            break;
+                        }
+                        pp=1;
+                    }
+                    fore.push(ri);
+                    fore.push(rj);
+                    //cout<<22222<<endl;
+                    while(!back.empty())
+                    {
+                        a[sum]=back.top();
+                        back.pop();
+                        a[sum+1]=back.top();
+                        back.pop();
+                        sum+=2;
+                    }
+                    while(!fore.empty())
+                    {
+                        a[sum]=fore.front();
+                        fore.pop();
+                        a[sum+1]=fore.front();
+                        fore.pop();
+                        sum+=2;
+                    }
+                           
+
+            }
+    }bb++;ii--;jj--;if(dd+bb==y||aa+cc==x)break;
+    for (;jj>=0+dd;jj--)
+    {
+        
+            if(map[ii][jj]=='0'&&intmap[s][ii][jj]<=zz/2&&intmap[s][ii][jj]!=0)
+            {
+                si=ii;
+                sj=jj;
+                map[si][sj]='2';
+                back.push(jj);
+                back.push(ii);
+
+                    while(1)
+                    {
+                        int pp=1;
+                        if(si-1>-1)
+                        {
+                            if(intmap[s][si-1][sj]==intmap[s][si][sj]-1&&intmap[s][si-1][sj]!=0&&pp&&map[si-1][sj]=='0')
+                            {
+                                
+                                back.push(sj);
+                                back.push(si-1);
+                                fore.push(si-1);
+                                fore.push(sj);
+                                si=si-1;
+                                map[si][sj]='2';
+                                pp=0;
+                            }
+                        }
+                        if(si+1<x)
+                        {
+                            if(intmap[s][si+1][sj]==intmap[s][si][sj]-1&&intmap[s][si+1][sj]!=0&&pp&&map[si+1][sj]=='0')
+                            {
+                                back.push(sj);
+                                back.push(si+1);
+                                fore.push(si+1);
+                                fore.push(sj);
+                                si=si+1;
+                                map[si][sj]='2';
+                                pp=0;
+                                
+                            }
+                        }
+                        if(sj-1>-1)
+                        {
+                            if(intmap[s][si][sj-1]==intmap[s][si][sj]-1&&intmap[s][si][sj-1]!=0&&pp&&map[si][sj-1]=='0')
+                            {
+                                back.push(sj-1);
+                                back.push(si);
+                                fore.push(si);
+                                fore.push(sj-1);
+                                sj--;
+                                map[si][sj]='2';
+                                pp=0;
+                            }
+                        }
+                        if(sj+1<y)
+                        {
+                            if(intmap[s][si][sj+1]==intmap[s][si][sj]-1&&intmap[s][si][sj+1]!=0&&pp&&map[si][sj+1]=='0')
+                            {
+                                back.push(sj+1);
+                                back.push(si);
+                                fore.push(si);
+                                fore.push(sj+1);
+                                sj++;
+                                map[si][sj]='2';
+                                pp=0;
+                            }
+                        }
+                        if(si-1>-1)
+                        {
+                            if(intmap[s][si-1][sj]==intmap[s][si][sj]-1&&intmap[s][si-1][sj]!=0&&pp)
+                            {
+                                
+                                back.push(sj);
+                                back.push(si-1);
+                                fore.push(si-1);
+                                fore.push(sj);
+                                si=si-1;
+                                map[si][sj]='2';
+                                pp=0;
+                            }
+                        }
+                        if(si+1<x)
+                        {
+                            if(intmap[s][si+1][sj]==intmap[s][si][sj]-1&&intmap[s][si+1][sj]!=0&&pp)
+                            {
+                                back.push(sj);
+                                back.push(si+1);
+                                fore.push(si+1);
+                                fore.push(sj);
+                                si=si+1;
+                                map[si][sj]='2';
+                                pp=0;
+                                
+                            }
+                        }
+                        if(sj-1>-1)
+                        {
+                            if(intmap[s][si][sj-1]==intmap[s][si][sj]-1&&intmap[s][si][sj-1]!=0&&pp)
+                            {
+                                back.push(sj-1);
+                                back.push(si);
+                                fore.push(si);
+                                fore.push(sj-1);
+                                sj--;
+                                map[si][sj]='2';
+                                pp=0;
+                            }
+                        }
+                        if(sj+1<y)
+                        {
+                            if(intmap[s][si][sj+1]==intmap[s][si][sj]-1&&intmap[s][si][sj+1]!=0&&pp)
+                            {
+                                back.push(sj+1);
+                                back.push(si);
+                                fore.push(si);
+                                fore.push(sj+1);
+                                sj++;
+                                map[si][sj]='2';
+                                pp=0;
+                            }
+                        }
+                        if(pp==1)
+                        {
+                            break;
+                        }
+                        pp=1;
+                    }
+                    fore.push(ri);
+                    fore.push(rj);
+                    //cout<<22222<<endl;
+                    while(!back.empty())
+                    {
+                        a[sum]=back.top();
+                        back.pop();
+                        a[sum+1]=back.top();
+                        back.pop();
+                        sum+=2;
+                    }
+                    while(!fore.empty())
+                    {
+                        a[sum]=fore.front();
+                        fore.pop();
+                        a[sum+1]=fore.front();
+                        fore.pop();
+                        sum+=2;
+                    }
+                           
+
+            }
+    }cc++;jj++;ii--;if(dd+bb==y||aa+cc==x)break;
+    for (;ii>=0+aa;ii--)
+    {
+        
+            if(map[ii][jj]=='0'&&intmap[s][ii][jj]<=zz/2&&intmap[s][ii][jj]!=0)
+            {
+                si=ii;
+                sj=jj;
+                map[si][sj]='2';
+                back.push(jj);
+                back.push(ii);
+
+                    while(1)
+                    {
+                        int pp=1;
+                        if(si-1>-1)
+                        {
+                            if(intmap[s][si-1][sj]==intmap[s][si][sj]-1&&intmap[s][si-1][sj]!=0&&pp&&map[si-1][sj]=='0')
+                            {
+                                
+                                back.push(sj);
+                                back.push(si-1);
+                                fore.push(si-1);
+                                fore.push(sj);
+                                si=si-1;
+                                map[si][sj]='2';
+                                pp=0;
+                            }
+                        }
+                        if(si+1<x)
+                        {
+                            if(intmap[s][si+1][sj]==intmap[s][si][sj]-1&&intmap[s][si+1][sj]!=0&&pp&&map[si+1][sj]=='0')
+                            {
+                                back.push(sj);
+                                back.push(si+1);
+                                fore.push(si+1);
+                                fore.push(sj);
+                                si=si+1;
+                                map[si][sj]='2';
+                                pp=0;
+                                
+                            }
+                        }
+                        if(sj-1>-1)
+                        {
+                            if(intmap[s][si][sj-1]==intmap[s][si][sj]-1&&intmap[s][si][sj-1]!=0&&pp&&map[si][sj-1]=='0')
+                            {
+                                back.push(sj-1);
+                                back.push(si);
+                                fore.push(si);
+                                fore.push(sj-1);
+                                sj--;
+                                map[si][sj]='2';
+                                pp=0;
+                            }
+                        }
+                        if(sj+1<y)
+                        {
+                            if(intmap[s][si][sj+1]==intmap[s][si][sj]-1&&intmap[s][si][sj+1]!=0&&pp&&map[si][sj+1]=='0')
+                            {
+                                back.push(sj+1);
+                                back.push(si);
+                                fore.push(si);
+                                fore.push(sj+1);
+                                sj++;
+                                map[si][sj]='2';
+                                pp=0;
+                            }
+                        }
+                        if(si-1>-1)
+                        {
+                            if(intmap[s][si-1][sj]==intmap[s][si][sj]-1&&intmap[s][si-1][sj]!=0&&pp)
+                            {
+                                
+                                back.push(sj);
+                                back.push(si-1);
+                                fore.push(si-1);
+                                fore.push(sj);
+                                si=si-1;
+                                map[si][sj]='2';
+                                pp=0;
+                            }
+                        }
+                        if(si+1<x)
+                        {
+                            if(intmap[s][si+1][sj]==intmap[s][si][sj]-1&&intmap[s][si+1][sj]!=0&&pp)
+                            {
+                                back.push(sj);
+                                back.push(si+1);
+                                fore.push(si+1);
+                                fore.push(sj);
+                                si=si+1;
+                                map[si][sj]='2';
+                                pp=0;
+                                
+                            }
+                        }
+                        if(sj-1>-1)
+                        {
+                            if(intmap[s][si][sj-1]==intmap[s][si][sj]-1&&intmap[s][si][sj-1]!=0&&pp)
+                            {
+                                back.push(sj-1);
+                                back.push(si);
+                                fore.push(si);
+                                fore.push(sj-1);
+                                sj--;
+                                map[si][sj]='2';
+                                pp=0;
+                            }
+                        }
+                        if(sj+1<y)
+                        {
+                            if(intmap[s][si][sj+1]==intmap[s][si][sj]-1&&intmap[s][si][sj+1]!=0&&pp)
+                            {
+                                back.push(sj+1);
+                                back.push(si);
+                                fore.push(si);
+                                fore.push(sj+1);
+                                sj++;
+                                map[si][sj]='2';
+                                pp=0;
+                            }
+                        }
+                        if(pp==1)
+                        {
+                            break;
+                        }
+                        pp=1;
+                    }
+                    fore.push(ri);
+                    fore.push(rj);
+                    //cout<<22222<<endl;
+                    while(!back.empty())
+                    {
+                        a[sum]=back.top();
+                        back.pop();
+                        a[sum+1]=back.top();
+                        back.pop();
+                        sum+=2;
+                    }
+                    while(!fore.empty())
+                    {
+                        a[sum]=fore.front();
+                        fore.pop();
+                        a[sum+1]=fore.front();
+                        fore.pop();
+                        sum+=2;
+                    }
+                           
+
+            }
+    }dd++;ii++;jj++;if(dd+bb==y||aa+cc==x)break;
+
+
+        
+    }
     
 
 
@@ -1127,14 +1128,14 @@ for (int z=0;z<4;z++)
 
    outfile<<endl;outfile<<endl;
 
-
+*/
        for(int i=0;i<x;i++)
     {
         for(int j=0;j<y;j++)
         {
             outfile<<' '<<map[i][j];
         }outfile<<endl;
-    }outfile<<endl;outfile<<endl;*/
+    }outfile<<endl;outfile<<endl;
    outfile<<sum<<endl;
    
    cout<<sum<<" sum "<<endl;
