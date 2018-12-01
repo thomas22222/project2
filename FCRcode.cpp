@@ -235,53 +235,50 @@ cout<<"sssssssssss"<<' '<<"mark"<<s<<endl;
         ai=ri;
         aj=rj+1;
     }
-    stack<int>back;
-    queue<int>fore;
-    
-    
-            int aa=0,bb=0,cc=0,dd=0;
-        int ii=0,jj=0;
+
+      
+    int aa=0,bb=0,cc=0,dd=0;
+    int ii=0,jj=0;
     while(1)
     {
-
-
-    for (;jj<y-bb;jj++)
-    {
-        
-            if(map[ii][jj]=='0'&&intmap[s][ii][jj]<=zz/2&&intmap[s][ii][jj]!=0)
+        for (;jj<y-bb;jj++)
+        {
+             if(map[ii][jj]=='0'&&intmap[s][ii][jj]<=zz/2&&intmap[s][ii][jj]!=0)
             {
                 si=ii;
                 sj=jj;
+                ai=ii;
+                aj=jj;
                 map[si][sj]='2';
-                back.push(jj);
-                back.push(ii);
-
+                int ll=sum+(intmap[s][ii][jj]*2)-1;
+                sum=sum+(intmap[s][ii][jj]*2);
+                a[ll--]=sj;
+                a[ll--]=si;
                     while(1)
                     {
                         int pp=1;
+                        int ppp=1;
                         if(si-1>-1)
                         {
                             if(intmap[s][si-1][sj]==intmap[s][si][sj]-1&&intmap[s][si-1][sj]!=0&&pp&&map[si-1][sj]=='0')
                             {
                                 
-                                back.push(sj);
-                                back.push(si-1);
-                                fore.push(si-1);
-                                fore.push(sj);
                                 si=si-1;
+                                a[ll--]=sj;
+                                a[ll--]=si;
                                 map[si][sj]='2';
                                 pp=0;
+                                
                             }
                         }
                         if(si+1<x)
                         {
                             if(intmap[s][si+1][sj]==intmap[s][si][sj]-1&&intmap[s][si+1][sj]!=0&&pp&&map[si+1][sj]=='0')
                             {
-                                back.push(sj);
-                                back.push(si+1);
-                                fore.push(si+1);
-                                fore.push(sj);
+                                
                                 si=si+1;
+                                a[ll--]=sj;
+                                a[ll--]=si;
                                 map[si][sj]='2';
                                 pp=0;
                                 
@@ -291,11 +288,9 @@ cout<<"sssssssssss"<<' '<<"mark"<<s<<endl;
                         {
                             if(intmap[s][si][sj-1]==intmap[s][si][sj]-1&&intmap[s][si][sj-1]!=0&&pp&&map[si][sj-1]=='0')
                             {
-                                back.push(sj-1);
-                                back.push(si);
-                                fore.push(si);
-                                fore.push(sj-1);
                                 sj--;
+                                a[ll--]=sj;
+                                a[ll--]=si;
                                 map[si][sj]='2';
                                 pp=0;
                             }
@@ -304,11 +299,9 @@ cout<<"sssssssssss"<<' '<<"mark"<<s<<endl;
                         {
                             if(intmap[s][si][sj+1]==intmap[s][si][sj]-1&&intmap[s][si][sj+1]!=0&&pp&&map[si][sj+1]=='0')
                             {
-                                back.push(sj+1);
-                                back.push(si);
-                                fore.push(si);
-                                fore.push(sj+1);
                                 sj++;
+                                a[ll--]=sj;
+                                a[ll--]=si;
                                 map[si][sj]='2';
                                 pp=0;
                             }
@@ -317,12 +310,9 @@ cout<<"sssssssssss"<<' '<<"mark"<<s<<endl;
                         {
                             if(intmap[s][si-1][sj]==intmap[s][si][sj]-1&&intmap[s][si-1][sj]!=0&&pp)
                             {
-                                
-                                back.push(sj);
-                                back.push(si-1);
-                                fore.push(si-1);
-                                fore.push(sj);
                                 si=si-1;
+                                a[ll--]=sj;
+                                a[ll--]=si;
                                 map[si][sj]='2';
                                 pp=0;
                             }
@@ -331,11 +321,9 @@ cout<<"sssssssssss"<<' '<<"mark"<<s<<endl;
                         {
                             if(intmap[s][si+1][sj]==intmap[s][si][sj]-1&&intmap[s][si+1][sj]!=0&&pp)
                             {
-                                back.push(sj);
-                                back.push(si+1);
-                                fore.push(si+1);
-                                fore.push(sj);
                                 si=si+1;
+                                a[ll--]=sj;
+                                a[ll--]=si;
                                 map[si][sj]='2';
                                 pp=0;
                                 
@@ -345,11 +333,9 @@ cout<<"sssssssssss"<<' '<<"mark"<<s<<endl;
                         {
                             if(intmap[s][si][sj-1]==intmap[s][si][sj]-1&&intmap[s][si][sj-1]!=0&&pp)
                             {
-                                back.push(sj-1);
-                                back.push(si);
-                                fore.push(si);
-                                fore.push(sj-1);
                                 sj--;
+                                a[ll--]=sj;
+                                a[ll--]=si;
                                 map[si][sj]='2';
                                 pp=0;
                             }
@@ -358,81 +344,155 @@ cout<<"sssssssssss"<<' '<<"mark"<<s<<endl;
                         {
                             if(intmap[s][si][sj+1]==intmap[s][si][sj]-1&&intmap[s][si][sj+1]!=0&&pp)
                             {
-                                back.push(sj+1);
-                                back.push(si);
-                                fore.push(si);
-                                fore.push(sj+1);
                                 sj++;
+                                a[ll--]=sj;
+                                a[ll--]=si;
                                 map[si][sj]='2';
                                 pp=0;
+                            }
+                        }
+                        if(ai-1>-1)
+                        {
+                            if(intmap[s][ai-1][aj]==intmap[s][ai][aj]-1&&intmap[s][ai-1][aj]!=0&&ppp&&map[ai-1][aj]=='0')
+                            {
+                                
+                                ai=ai-1;
+                                a[sum++]=ai;
+                                a[sum++]=aj;
+                                map[ai][aj]='2';
+                                ppp=0;
+                            }
+                        }
+                        if(ai+1<x)
+                        {
+                            if(intmap[s][ai+1][aj]==intmap[s][ai][aj]-1&&intmap[s][ai+1][aj]!=0&&ppp&&map[ai+1][aj]=='0')
+                            {
+                                
+                                ai=ai+1;
+                                a[sum++]=ai;
+                                a[sum++]=aj;
+                                map[ai][aj]='2';
+                                ppp=0;
+                                
+                            }
+                        }
+                        if(aj-1>-1)
+                        {
+                            if(intmap[s][ai][aj-1]==intmap[s][ai][aj]-1&&intmap[s][ai][aj-1]!=0&&ppp&&map[ai][aj-1]=='0')
+                            {
+                                aj--;
+                                a[sum++]=ai;
+                                a[sum++]=aj;
+                                map[ai][aj]='2';
+                                ppp=0;
+                            }
+                        }
+                        if(aj+1<y)
+                        {
+                            if(intmap[s][ai][aj+1]==intmap[s][ai][aj]-1&&intmap[s][ai][aj+1]!=0&&ppp&&map[ai][aj+1]=='0')
+                            {
+                                aj++;
+                                a[sum++]=ai;
+                                a[sum++]=aj;
+                                map[ai][aj]='2';
+                                ppp=0;
+                            }
+                        }
+                        if(ai-1>-1)
+                        {
+                            if(intmap[s][ai-1][aj]==intmap[s][ai][aj]-1&&intmap[s][ai-1][aj]!=0&&ppp)
+                            {
+                                
+                                ai=ai-1;
+                                a[sum++]=ai;
+                                a[sum++]=aj;
+                                map[ai][aj]='2';
+                                ppp=0;
+                            }
+                        }
+                        if(ai+1<x)
+                        {
+                            if(intmap[s][ai+1][aj]==intmap[s][ai][aj]-1&&intmap[s][ai+1][aj]!=0&&ppp)
+                            {
+                                
+                                ai=ai+1;
+                                a[sum++]=ai;
+                                a[sum++]=aj;
+                                map[ai][aj]='2';
+                                ppp=0;
+                                
+                            }
+                        }
+                        if(aj-1>-1)
+                        {
+                            if(intmap[s][ai][aj-1]==intmap[s][ai][aj]-1&&intmap[s][ai][aj-1]!=0&&ppp)
+                            {
+                                aj--;
+                                a[sum++]=ai;
+                                a[sum++]=aj;
+                                map[ai][aj]='2';
+                                ppp=0;
+                            }
+                        }
+                        if(aj+1<y)
+                        {
+                            if(intmap[s][ai][aj+1]==intmap[s][ai][aj]-1&&intmap[s][ai][aj+1]!=0&&ppp)
+                            {
+                                aj++;
+                                a[sum++]=ai;
+                                a[sum++]=aj;
+                                map[ai][aj]='2';
+                                ppp=0;
                             }
                         }
                         if(pp==1)
                         {
                             break;
                         }
-                        pp=1;
+                        pp=1;ppp=1;
                     }
-                    fore.push(ri);
-                    fore.push(rj);
-                    //cout<<22222<<endl;
-                    while(!back.empty())
-                    {
-                        a[sum]=back.top();
-                        back.pop();
-                        a[sum+1]=back.top();
-                        back.pop();
-                        sum+=2;
-                    }
-                    while(!fore.empty())
-                    {
-                        a[sum]=fore.front();
-                        fore.pop();
-                        a[sum+1]=fore.front();
-                        fore.pop();
-                        sum+=2;
-                    }
-                           
-
+                    a[sum++]=ri;
+                    a[sum++]=rj;
             }
-    }aa++;jj--;ii++;if(dd+bb==y||aa+cc==x)break;
-    for (;ii<x-cc;ii++)
-    {
-        
+        }aa++;jj--;ii++;if(dd+bb==y||aa+cc==x)break;
+        for (;ii<x-cc;ii++)
+        {
             if(map[ii][jj]=='0'&&intmap[s][ii][jj]<=zz/2&&intmap[s][ii][jj]!=0)
             {
                 si=ii;
                 sj=jj;
+                ai=ii;
+                aj=jj;
                 map[si][sj]='2';
-                back.push(jj);
-                back.push(ii);
-
+                int ll=sum+(intmap[s][ii][jj]*2)-1;
+                sum=sum+(intmap[s][ii][jj]*2);
+                a[ll--]=sj;
+                a[ll--]=si;
                     while(1)
                     {
                         int pp=1;
+                        int ppp=1;
                         if(si-1>-1)
                         {
                             if(intmap[s][si-1][sj]==intmap[s][si][sj]-1&&intmap[s][si-1][sj]!=0&&pp&&map[si-1][sj]=='0')
                             {
                                 
-                                back.push(sj);
-                                back.push(si-1);
-                                fore.push(si-1);
-                                fore.push(sj);
                                 si=si-1;
+                                a[ll--]=sj;
+                                a[ll--]=si;
                                 map[si][sj]='2';
                                 pp=0;
+                                
                             }
                         }
                         if(si+1<x)
                         {
                             if(intmap[s][si+1][sj]==intmap[s][si][sj]-1&&intmap[s][si+1][sj]!=0&&pp&&map[si+1][sj]=='0')
                             {
-                                back.push(sj);
-                                back.push(si+1);
-                                fore.push(si+1);
-                                fore.push(sj);
+                                
                                 si=si+1;
+                                a[ll--]=sj;
+                                a[ll--]=si;
                                 map[si][sj]='2';
                                 pp=0;
                                 
@@ -442,11 +502,9 @@ cout<<"sssssssssss"<<' '<<"mark"<<s<<endl;
                         {
                             if(intmap[s][si][sj-1]==intmap[s][si][sj]-1&&intmap[s][si][sj-1]!=0&&pp&&map[si][sj-1]=='0')
                             {
-                                back.push(sj-1);
-                                back.push(si);
-                                fore.push(si);
-                                fore.push(sj-1);
                                 sj--;
+                                a[ll--]=sj;
+                                a[ll--]=si;
                                 map[si][sj]='2';
                                 pp=0;
                             }
@@ -455,11 +513,9 @@ cout<<"sssssssssss"<<' '<<"mark"<<s<<endl;
                         {
                             if(intmap[s][si][sj+1]==intmap[s][si][sj]-1&&intmap[s][si][sj+1]!=0&&pp&&map[si][sj+1]=='0')
                             {
-                                back.push(sj+1);
-                                back.push(si);
-                                fore.push(si);
-                                fore.push(sj+1);
                                 sj++;
+                                a[ll--]=sj;
+                                a[ll--]=si;
                                 map[si][sj]='2';
                                 pp=0;
                             }
@@ -468,12 +524,9 @@ cout<<"sssssssssss"<<' '<<"mark"<<s<<endl;
                         {
                             if(intmap[s][si-1][sj]==intmap[s][si][sj]-1&&intmap[s][si-1][sj]!=0&&pp)
                             {
-                                
-                                back.push(sj);
-                                back.push(si-1);
-                                fore.push(si-1);
-                                fore.push(sj);
                                 si=si-1;
+                                a[ll--]=sj;
+                                a[ll--]=si;
                                 map[si][sj]='2';
                                 pp=0;
                             }
@@ -482,11 +535,9 @@ cout<<"sssssssssss"<<' '<<"mark"<<s<<endl;
                         {
                             if(intmap[s][si+1][sj]==intmap[s][si][sj]-1&&intmap[s][si+1][sj]!=0&&pp)
                             {
-                                back.push(sj);
-                                back.push(si+1);
-                                fore.push(si+1);
-                                fore.push(sj);
                                 si=si+1;
+                                a[ll--]=sj;
+                                a[ll--]=si;
                                 map[si][sj]='2';
                                 pp=0;
                                 
@@ -496,11 +547,9 @@ cout<<"sssssssssss"<<' '<<"mark"<<s<<endl;
                         {
                             if(intmap[s][si][sj-1]==intmap[s][si][sj]-1&&intmap[s][si][sj-1]!=0&&pp)
                             {
-                                back.push(sj-1);
-                                back.push(si);
-                                fore.push(si);
-                                fore.push(sj-1);
                                 sj--;
+                                a[ll--]=sj;
+                                a[ll--]=si;
                                 map[si][sj]='2';
                                 pp=0;
                             }
@@ -509,81 +558,155 @@ cout<<"sssssssssss"<<' '<<"mark"<<s<<endl;
                         {
                             if(intmap[s][si][sj+1]==intmap[s][si][sj]-1&&intmap[s][si][sj+1]!=0&&pp)
                             {
-                                back.push(sj+1);
-                                back.push(si);
-                                fore.push(si);
-                                fore.push(sj+1);
                                 sj++;
+                                a[ll--]=sj;
+                                a[ll--]=si;
                                 map[si][sj]='2';
                                 pp=0;
+                            }
+                        }
+                        if(ai-1>-1)
+                        {
+                            if(intmap[s][ai-1][aj]==intmap[s][ai][aj]-1&&intmap[s][ai-1][aj]!=0&&ppp&&map[ai-1][aj]=='0')
+                            {
+                                
+                                ai=ai-1;
+                                a[sum++]=ai;
+                                a[sum++]=aj;
+                                map[ai][aj]='2';
+                                ppp=0;
+                            }
+                        }
+                        if(ai+1<x)
+                        {
+                            if(intmap[s][ai+1][aj]==intmap[s][ai][aj]-1&&intmap[s][ai+1][aj]!=0&&ppp&&map[ai+1][aj]=='0')
+                            {
+                                
+                                ai=ai+1;
+                                a[sum++]=ai;
+                                a[sum++]=aj;
+                                map[ai][aj]='2';
+                                ppp=0;
+                                
+                            }
+                        }
+                        if(aj-1>-1)
+                        {
+                            if(intmap[s][ai][aj-1]==intmap[s][ai][aj]-1&&intmap[s][ai][aj-1]!=0&&ppp&&map[ai][aj-1]=='0')
+                            {
+                                aj--;
+                                a[sum++]=ai;
+                                a[sum++]=aj;
+                                map[ai][aj]='2';
+                                ppp=0;
+                            }
+                        }
+                        if(aj+1<y)
+                        {
+                            if(intmap[s][ai][aj+1]==intmap[s][ai][aj]-1&&intmap[s][ai][aj+1]!=0&&ppp&&map[ai][aj+1]=='0')
+                            {
+                                aj++;
+                                a[sum++]=ai;
+                                a[sum++]=aj;
+                                map[ai][aj]='2';
+                                ppp=0;
+                            }
+                        }
+                        if(ai-1>-1)
+                        {
+                            if(intmap[s][ai-1][aj]==intmap[s][ai][aj]-1&&intmap[s][ai-1][aj]!=0&&ppp)
+                            {
+                                
+                                ai=ai-1;
+                                a[sum++]=ai;
+                                a[sum++]=aj;
+                                map[ai][aj]='2';
+                                ppp=0;
+                            }
+                        }
+                        if(ai+1<x)
+                        {
+                            if(intmap[s][ai+1][aj]==intmap[s][ai][aj]-1&&intmap[s][ai+1][aj]!=0&&ppp)
+                            {
+                                
+                                ai=ai+1;
+                                a[sum++]=ai;
+                                a[sum++]=aj;
+                                map[ai][aj]='2';
+                                ppp=0;
+                                
+                            }
+                        }
+                        if(aj-1>-1)
+                        {
+                            if(intmap[s][ai][aj-1]==intmap[s][ai][aj]-1&&intmap[s][ai][aj-1]!=0&&ppp)
+                            {
+                                aj--;
+                                a[sum++]=ai;
+                                a[sum++]=aj;
+                                map[ai][aj]='2';
+                                ppp=0;
+                            }
+                        }
+                        if(aj+1<y)
+                        {
+                            if(intmap[s][ai][aj+1]==intmap[s][ai][aj]-1&&intmap[s][ai][aj+1]!=0&&ppp)
+                            {
+                                aj++;
+                                a[sum++]=ai;
+                                a[sum++]=aj;
+                                map[ai][aj]='2';
+                                ppp=0;
                             }
                         }
                         if(pp==1)
                         {
                             break;
                         }
-                        pp=1;
+                        pp=1;ppp=1;
                     }
-                    fore.push(ri);
-                    fore.push(rj);
-                    //cout<<22222<<endl;
-                    while(!back.empty())
-                    {
-                        a[sum]=back.top();
-                        back.pop();
-                        a[sum+1]=back.top();
-                        back.pop();
-                        sum+=2;
-                    }
-                    while(!fore.empty())
-                    {
-                        a[sum]=fore.front();
-                        fore.pop();
-                        a[sum+1]=fore.front();
-                        fore.pop();
-                        sum+=2;
-                    }
-                           
-
+                    a[sum++]=ri;
+                    a[sum++]=rj;
             }
-    }bb++;ii--;jj--;if(dd+bb==y||aa+cc==x)break;
-    for (;jj>=0+dd;jj--)
-    {
-        
-            if(map[ii][jj]=='0'&&intmap[s][ii][jj]<=zz/2&&intmap[s][ii][jj]!=0)
+        }bb++;ii--;jj--;if(dd+bb==y||aa+cc==x)break;
+        for (;jj>=0+dd;jj--)
+        {
+             if(map[ii][jj]=='0'&&intmap[s][ii][jj]<=zz/2&&intmap[s][ii][jj]!=0)
             {
                 si=ii;
                 sj=jj;
+                ai=ii;
+                aj=jj;
                 map[si][sj]='2';
-                back.push(jj);
-                back.push(ii);
-
+                int ll=sum+(intmap[s][ii][jj]*2)-1;
+                sum=sum+(intmap[s][ii][jj]*2);
+                a[ll--]=sj;
+                a[ll--]=si;
                     while(1)
                     {
                         int pp=1;
+                        int ppp=1;
                         if(si-1>-1)
                         {
                             if(intmap[s][si-1][sj]==intmap[s][si][sj]-1&&intmap[s][si-1][sj]!=0&&pp&&map[si-1][sj]=='0')
                             {
                                 
-                                back.push(sj);
-                                back.push(si-1);
-                                fore.push(si-1);
-                                fore.push(sj);
                                 si=si-1;
+                                a[ll--]=sj;
+                                a[ll--]=si;
                                 map[si][sj]='2';
                                 pp=0;
+                                
                             }
                         }
                         if(si+1<x)
                         {
                             if(intmap[s][si+1][sj]==intmap[s][si][sj]-1&&intmap[s][si+1][sj]!=0&&pp&&map[si+1][sj]=='0')
                             {
-                                back.push(sj);
-                                back.push(si+1);
-                                fore.push(si+1);
-                                fore.push(sj);
+                                
                                 si=si+1;
+                                a[ll--]=sj;
+                                a[ll--]=si;
                                 map[si][sj]='2';
                                 pp=0;
                                 
@@ -593,11 +716,9 @@ cout<<"sssssssssss"<<' '<<"mark"<<s<<endl;
                         {
                             if(intmap[s][si][sj-1]==intmap[s][si][sj]-1&&intmap[s][si][sj-1]!=0&&pp&&map[si][sj-1]=='0')
                             {
-                                back.push(sj-1);
-                                back.push(si);
-                                fore.push(si);
-                                fore.push(sj-1);
                                 sj--;
+                                a[ll--]=sj;
+                                a[ll--]=si;
                                 map[si][sj]='2';
                                 pp=0;
                             }
@@ -606,11 +727,9 @@ cout<<"sssssssssss"<<' '<<"mark"<<s<<endl;
                         {
                             if(intmap[s][si][sj+1]==intmap[s][si][sj]-1&&intmap[s][si][sj+1]!=0&&pp&&map[si][sj+1]=='0')
                             {
-                                back.push(sj+1);
-                                back.push(si);
-                                fore.push(si);
-                                fore.push(sj+1);
                                 sj++;
+                                a[ll--]=sj;
+                                a[ll--]=si;
                                 map[si][sj]='2';
                                 pp=0;
                             }
@@ -619,12 +738,9 @@ cout<<"sssssssssss"<<' '<<"mark"<<s<<endl;
                         {
                             if(intmap[s][si-1][sj]==intmap[s][si][sj]-1&&intmap[s][si-1][sj]!=0&&pp)
                             {
-                                
-                                back.push(sj);
-                                back.push(si-1);
-                                fore.push(si-1);
-                                fore.push(sj);
                                 si=si-1;
+                                a[ll--]=sj;
+                                a[ll--]=si;
                                 map[si][sj]='2';
                                 pp=0;
                             }
@@ -633,11 +749,9 @@ cout<<"sssssssssss"<<' '<<"mark"<<s<<endl;
                         {
                             if(intmap[s][si+1][sj]==intmap[s][si][sj]-1&&intmap[s][si+1][sj]!=0&&pp)
                             {
-                                back.push(sj);
-                                back.push(si+1);
-                                fore.push(si+1);
-                                fore.push(sj);
                                 si=si+1;
+                                a[ll--]=sj;
+                                a[ll--]=si;
                                 map[si][sj]='2';
                                 pp=0;
                                 
@@ -647,11 +761,9 @@ cout<<"sssssssssss"<<' '<<"mark"<<s<<endl;
                         {
                             if(intmap[s][si][sj-1]==intmap[s][si][sj]-1&&intmap[s][si][sj-1]!=0&&pp)
                             {
-                                back.push(sj-1);
-                                back.push(si);
-                                fore.push(si);
-                                fore.push(sj-1);
                                 sj--;
+                                a[ll--]=sj;
+                                a[ll--]=si;
                                 map[si][sj]='2';
                                 pp=0;
                             }
@@ -660,81 +772,155 @@ cout<<"sssssssssss"<<' '<<"mark"<<s<<endl;
                         {
                             if(intmap[s][si][sj+1]==intmap[s][si][sj]-1&&intmap[s][si][sj+1]!=0&&pp)
                             {
-                                back.push(sj+1);
-                                back.push(si);
-                                fore.push(si);
-                                fore.push(sj+1);
                                 sj++;
+                                a[ll--]=sj;
+                                a[ll--]=si;
                                 map[si][sj]='2';
                                 pp=0;
+                            }
+                        }
+                        if(ai-1>-1)
+                        {
+                            if(intmap[s][ai-1][aj]==intmap[s][ai][aj]-1&&intmap[s][ai-1][aj]!=0&&ppp&&map[ai-1][aj]=='0')
+                            {
+                                
+                                ai=ai-1;
+                                a[sum++]=ai;
+                                a[sum++]=aj;
+                                map[ai][aj]='2';
+                                ppp=0;
+                            }
+                        }
+                        if(ai+1<x)
+                        {
+                            if(intmap[s][ai+1][aj]==intmap[s][ai][aj]-1&&intmap[s][ai+1][aj]!=0&&ppp&&map[ai+1][aj]=='0')
+                            {
+                                
+                                ai=ai+1;
+                                a[sum++]=ai;
+                                a[sum++]=aj;
+                                map[ai][aj]='2';
+                                ppp=0;
+                                
+                            }
+                        }
+                        if(aj-1>-1)
+                        {
+                            if(intmap[s][ai][aj-1]==intmap[s][ai][aj]-1&&intmap[s][ai][aj-1]!=0&&ppp&&map[ai][aj-1]=='0')
+                            {
+                                aj--;
+                                a[sum++]=ai;
+                                a[sum++]=aj;
+                                map[ai][aj]='2';
+                                ppp=0;
+                            }
+                        }
+                        if(aj+1<y)
+                        {
+                            if(intmap[s][ai][aj+1]==intmap[s][ai][aj]-1&&intmap[s][ai][aj+1]!=0&&ppp&&map[ai][aj+1]=='0')
+                            {
+                                aj++;
+                                a[sum++]=ai;
+                                a[sum++]=aj;
+                                map[ai][aj]='2';
+                                ppp=0;
+                            }
+                        }
+                        if(ai-1>-1)
+                        {
+                            if(intmap[s][ai-1][aj]==intmap[s][ai][aj]-1&&intmap[s][ai-1][aj]!=0&&ppp)
+                            {
+                                
+                                ai=ai-1;
+                                a[sum++]=ai;
+                                a[sum++]=aj;
+                                map[ai][aj]='2';
+                                ppp=0;
+                            }
+                        }
+                        if(ai+1<x)
+                        {
+                            if(intmap[s][ai+1][aj]==intmap[s][ai][aj]-1&&intmap[s][ai+1][aj]!=0&&ppp)
+                            {
+                                
+                                ai=ai+1;
+                                a[sum++]=ai;
+                                a[sum++]=aj;
+                                map[ai][aj]='2';
+                                ppp=0;
+                                
+                            }
+                        }
+                        if(aj-1>-1)
+                        {
+                            if(intmap[s][ai][aj-1]==intmap[s][ai][aj]-1&&intmap[s][ai][aj-1]!=0&&ppp)
+                            {
+                                aj--;
+                                a[sum++]=ai;
+                                a[sum++]=aj;
+                                map[ai][aj]='2';
+                                ppp=0;
+                            }
+                        }
+                        if(aj+1<y)
+                        {
+                            if(intmap[s][ai][aj+1]==intmap[s][ai][aj]-1&&intmap[s][ai][aj+1]!=0&&ppp)
+                            {
+                                aj++;
+                                a[sum++]=ai;
+                                a[sum++]=aj;
+                                map[ai][aj]='2';
+                                ppp=0;
                             }
                         }
                         if(pp==1)
                         {
                             break;
                         }
-                        pp=1;
+                        pp=1;ppp=1;
                     }
-                    fore.push(ri);
-                    fore.push(rj);
-                    //cout<<22222<<endl;
-                    while(!back.empty())
-                    {
-                        a[sum]=back.top();
-                        back.pop();
-                        a[sum+1]=back.top();
-                        back.pop();
-                        sum+=2;
-                    }
-                    while(!fore.empty())
-                    {
-                        a[sum]=fore.front();
-                        fore.pop();
-                        a[sum+1]=fore.front();
-                        fore.pop();
-                        sum+=2;
-                    }
-                           
-
+                    a[sum++]=ri;
+                    a[sum++]=rj;
             }
-    }cc++;jj++;ii--;if(dd+bb==y||aa+cc==x)break;
-    for (;ii>=0+aa;ii--)
-    {
-        
-            if(map[ii][jj]=='0'&&intmap[s][ii][jj]<=zz/2&&intmap[s][ii][jj]!=0)
+        }cc++;jj++;ii--;if(dd+bb==y||aa+cc==x)break;
+        for (;ii>=0+aa;ii--)
+        {
+             if(map[ii][jj]=='0'&&intmap[s][ii][jj]<=zz/2&&intmap[s][ii][jj]!=0)
             {
                 si=ii;
                 sj=jj;
+                ai=ii;
+                aj=jj;
                 map[si][sj]='2';
-                back.push(jj);
-                back.push(ii);
-
+                int ll=sum+(intmap[s][ii][jj]*2)-1;
+                sum=sum+(intmap[s][ii][jj]*2);
+                a[ll--]=sj;
+                a[ll--]=si;
                     while(1)
                     {
                         int pp=1;
+                        int ppp=1;
                         if(si-1>-1)
                         {
                             if(intmap[s][si-1][sj]==intmap[s][si][sj]-1&&intmap[s][si-1][sj]!=0&&pp&&map[si-1][sj]=='0')
                             {
                                 
-                                back.push(sj);
-                                back.push(si-1);
-                                fore.push(si-1);
-                                fore.push(sj);
                                 si=si-1;
+                                a[ll--]=sj;
+                                a[ll--]=si;
                                 map[si][sj]='2';
                                 pp=0;
+                                
                             }
                         }
                         if(si+1<x)
                         {
                             if(intmap[s][si+1][sj]==intmap[s][si][sj]-1&&intmap[s][si+1][sj]!=0&&pp&&map[si+1][sj]=='0')
                             {
-                                back.push(sj);
-                                back.push(si+1);
-                                fore.push(si+1);
-                                fore.push(sj);
+                                
                                 si=si+1;
+                                a[ll--]=sj;
+                                a[ll--]=si;
                                 map[si][sj]='2';
                                 pp=0;
                                 
@@ -744,11 +930,9 @@ cout<<"sssssssssss"<<' '<<"mark"<<s<<endl;
                         {
                             if(intmap[s][si][sj-1]==intmap[s][si][sj]-1&&intmap[s][si][sj-1]!=0&&pp&&map[si][sj-1]=='0')
                             {
-                                back.push(sj-1);
-                                back.push(si);
-                                fore.push(si);
-                                fore.push(sj-1);
                                 sj--;
+                                a[ll--]=sj;
+                                a[ll--]=si;
                                 map[si][sj]='2';
                                 pp=0;
                             }
@@ -757,11 +941,9 @@ cout<<"sssssssssss"<<' '<<"mark"<<s<<endl;
                         {
                             if(intmap[s][si][sj+1]==intmap[s][si][sj]-1&&intmap[s][si][sj+1]!=0&&pp&&map[si][sj+1]=='0')
                             {
-                                back.push(sj+1);
-                                back.push(si);
-                                fore.push(si);
-                                fore.push(sj+1);
                                 sj++;
+                                a[ll--]=sj;
+                                a[ll--]=si;
                                 map[si][sj]='2';
                                 pp=0;
                             }
@@ -770,12 +952,9 @@ cout<<"sssssssssss"<<' '<<"mark"<<s<<endl;
                         {
                             if(intmap[s][si-1][sj]==intmap[s][si][sj]-1&&intmap[s][si-1][sj]!=0&&pp)
                             {
-                                
-                                back.push(sj);
-                                back.push(si-1);
-                                fore.push(si-1);
-                                fore.push(sj);
                                 si=si-1;
+                                a[ll--]=sj;
+                                a[ll--]=si;
                                 map[si][sj]='2';
                                 pp=0;
                             }
@@ -784,11 +963,9 @@ cout<<"sssssssssss"<<' '<<"mark"<<s<<endl;
                         {
                             if(intmap[s][si+1][sj]==intmap[s][si][sj]-1&&intmap[s][si+1][sj]!=0&&pp)
                             {
-                                back.push(sj);
-                                back.push(si+1);
-                                fore.push(si+1);
-                                fore.push(sj);
                                 si=si+1;
+                                a[ll--]=sj;
+                                a[ll--]=si;
                                 map[si][sj]='2';
                                 pp=0;
                                 
@@ -798,11 +975,9 @@ cout<<"sssssssssss"<<' '<<"mark"<<s<<endl;
                         {
                             if(intmap[s][si][sj-1]==intmap[s][si][sj]-1&&intmap[s][si][sj-1]!=0&&pp)
                             {
-                                back.push(sj-1);
-                                back.push(si);
-                                fore.push(si);
-                                fore.push(sj-1);
                                 sj--;
+                                a[ll--]=sj;
+                                a[ll--]=si;
                                 map[si][sj]='2';
                                 pp=0;
                             }
@@ -811,47 +986,117 @@ cout<<"sssssssssss"<<' '<<"mark"<<s<<endl;
                         {
                             if(intmap[s][si][sj+1]==intmap[s][si][sj]-1&&intmap[s][si][sj+1]!=0&&pp)
                             {
-                                back.push(sj+1);
-                                back.push(si);
-                                fore.push(si);
-                                fore.push(sj+1);
                                 sj++;
+                                a[ll--]=sj;
+                                a[ll--]=si;
                                 map[si][sj]='2';
                                 pp=0;
+                            }
+                        }
+                        if(ai-1>-1)
+                        {
+                            if(intmap[s][ai-1][aj]==intmap[s][ai][aj]-1&&intmap[s][ai-1][aj]!=0&&ppp&&map[ai-1][aj]=='0')
+                            {
+                                
+                                ai=ai-1;
+                                a[sum++]=ai;
+                                a[sum++]=aj;
+                                map[ai][aj]='2';
+                                ppp=0;
+                            }
+                        }
+                        if(ai+1<x)
+                        {
+                            if(intmap[s][ai+1][aj]==intmap[s][ai][aj]-1&&intmap[s][ai+1][aj]!=0&&ppp&&map[ai+1][aj]=='0')
+                            {
+                                
+                                ai=ai+1;
+                                a[sum++]=ai;
+                                a[sum++]=aj;
+                                map[ai][aj]='2';
+                                ppp=0;
+                                
+                            }
+                        }
+                        if(aj-1>-1)
+                        {
+                            if(intmap[s][ai][aj-1]==intmap[s][ai][aj]-1&&intmap[s][ai][aj-1]!=0&&ppp&&map[ai][aj-1]=='0')
+                            {
+                                aj--;
+                                a[sum++]=ai;
+                                a[sum++]=aj;
+                                map[ai][aj]='2';
+                                ppp=0;
+                            }
+                        }
+                        if(aj+1<y)
+                        {
+                            if(intmap[s][ai][aj+1]==intmap[s][ai][aj]-1&&intmap[s][ai][aj+1]!=0&&ppp&&map[ai][aj+1]=='0')
+                            {
+                                aj++;
+                                a[sum++]=ai;
+                                a[sum++]=aj;
+                                map[ai][aj]='2';
+                                ppp=0;
+                            }
+                        }
+                        if(ai-1>-1)
+                        {
+                            if(intmap[s][ai-1][aj]==intmap[s][ai][aj]-1&&intmap[s][ai-1][aj]!=0&&ppp)
+                            {
+                                
+                                ai=ai-1;
+                                a[sum++]=ai;
+                                a[sum++]=aj;
+                                map[ai][aj]='2';
+                                ppp=0;
+                            }
+                        }
+                        if(ai+1<x)
+                        {
+                            if(intmap[s][ai+1][aj]==intmap[s][ai][aj]-1&&intmap[s][ai+1][aj]!=0&&ppp)
+                            {
+                                
+                                ai=ai+1;
+                                a[sum++]=ai;
+                                a[sum++]=aj;
+                                map[ai][aj]='2';
+                                ppp=0;
+                                
+                            }
+                        }
+                        if(aj-1>-1)
+                        {
+                            if(intmap[s][ai][aj-1]==intmap[s][ai][aj]-1&&intmap[s][ai][aj-1]!=0&&ppp)
+                            {
+                                aj--;
+                                a[sum++]=ai;
+                                a[sum++]=aj;
+                                map[ai][aj]='2';
+                                ppp=0;
+                            }
+                        }
+                        if(aj+1<y)
+                        {
+                            if(intmap[s][ai][aj+1]==intmap[s][ai][aj]-1&&intmap[s][ai][aj+1]!=0&&ppp)
+                            {
+                                aj++;
+                                a[sum++]=ai;
+                                a[sum++]=aj;
+                                map[ai][aj]='2';
+                                ppp=0;
                             }
                         }
                         if(pp==1)
                         {
                             break;
                         }
-                        pp=1;
+                        pp=1;ppp=1;
                     }
-                    fore.push(ri);
-                    fore.push(rj);
-                    //cout<<22222<<endl;
-                    while(!back.empty())
-                    {
-                        a[sum]=back.top();
-                        back.pop();
-                        a[sum+1]=back.top();
-                        back.pop();
-                        sum+=2;
-                    }
-                    while(!fore.empty())
-                    {
-                        a[sum]=fore.front();
-                        fore.pop();
-                        a[sum+1]=fore.front();
-                        fore.pop();
-                        sum+=2;
-                    }
-                           
-
+                    a[sum++]=ri;
+                    a[sum++]=rj;
             }
-    }dd++;ii++;jj++;if(dd+bb==y||aa+cc==x)break;
-
-
-        
+        }dd++;ii++;jj++;if(dd+bb==y||aa+cc==x)break;
     }
     
 
@@ -940,60 +1185,60 @@ for(int nn=0;nn<agrc-1;nn++){
     ///////
     if(boo[0][0]==1)
     {
-        if(intmap[0][ri][rj-1]!=0)
+        if(intmap[0][ri][rj-1]!=0&&intmap[0][ri][rj-1]!=zz)
         {
             boo[0][1]=1;
         }
-        if(intmap[0][ri-1][rj]!=0)
+        if(intmap[0][ri-1][rj]!=0&&intmap[0][ri-1][rj]!=zz)
         {
             boo[0][2]=1;
         }
-        if(intmap[0][ri][rj+1]!=0)
+        if(intmap[0][ri][rj+1]!=0&&intmap[0][ri][rj+1]!=zz)
         {
             boo[0][3]=1;
         }
     }
     if(boo[1][1]==1)
     {
-        if(intmap[1][ri+1][rj]!=0)
+        if(intmap[1][ri+1][rj]!=0&&intmap[1][ri+1][rj]!=zz)
         {
             boo[1][0]=1;
         }
-        if(intmap[1][ri-1][rj]!=0)
+        if(intmap[1][ri-1][rj]!=0&&intmap[1][ri-1][rj]!=zz)
         {
             boo[1][2]=1;
         }
-        if(intmap[1][ri][rj+1]!=0)
+        if(intmap[1][ri][rj+1]!=0&&intmap[1][ri][rj+1]!=zz)
         {
             boo[1][3]=1;
         }
     }
     if(boo[2][2]==1)
     {
-        if(intmap[2][ri+1][rj]!=0)
+        if(intmap[2][ri+1][rj]!=0&&intmap[2][ri+1][rj]!=zz)
         {
             boo[2][0]=1;
         }
-        if(intmap[2][ri][rj-1]!=0)
+        if(intmap[2][ri][rj-1]!=0&&intmap[2][ri][rj-1]!=zz)
         {
             boo[2][1]=1;
         }
-        if(intmap[2][ri][rj+1]!=0)
+        if(intmap[2][ri][rj+1]!=0&&intmap[2][ri][rj+1]!=zz)
         {
             boo[2][3]=1;
         }
     }
     if(boo[3][3]==1)
     {
-        if(intmap[3][ri+1][rj]!=0)
+        if(intmap[3][ri+1][rj]!=0&&intmap[3][ri+1][rj]!=zz)
         {
             boo[3][0]=1;
         }
-        if(intmap[3][ri][rj-1]!=0)
+        if(intmap[3][ri][rj-1]!=0&&intmap[3][ri][rj-1]!=zz)
         {
             boo[3][1]=1;
         }
-        if(intmap[3][ri-1][rj]!=0)
+        if(intmap[3][ri-1][rj]!=0&&intmap[3][ri-1][rj]!=zz)
         {
             boo[3][2]=1;
         }
@@ -1062,6 +1307,14 @@ for(int nn=0;nn<agrc-1;nn++){
     {
         mark(s);
         
+               for(int i=0;i<x;i++)
+    {
+        for(int j=0;j<y;j++)
+        {
+            outfile<<' '<<map[i][j];
+        }outfile<<endl;
+    }outfile<<endl;outfile<<endl;
+   outfile<<sum<<endl;
         if(boo[s][(s+1)%4]==1)
         s=change(s,1);
         else if(boo[s][(s+2)%4]==1)
